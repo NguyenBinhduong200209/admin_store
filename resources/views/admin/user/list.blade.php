@@ -28,8 +28,8 @@
             <div class="form-action form-inline py-3">
                 <select class="form-control mr-1" id="">
                     <option>Chọn</option>
-                    <option>Tác vụ 1</option>
-                    <option>Tác vụ 2</option>
+                    <option>Sửa</option>
+                    <option>Xóa</option>
                 </select>
                 <input type="submit" name="btn-search" value="Áp dụng" class="btn btn-primary">
             </div>

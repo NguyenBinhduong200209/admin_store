@@ -87,7 +87,7 @@
                         </ul>
                     </li>
                     <li class="nav-link active">
-                        <a href="{{url('admin/product/list')}}">
+                        <a href="{{url('admin/product/cat/list')}}">
                             <div class="nav-link-icon d-inline-flex">
                                 <i class="far fa-folder"></i>
                             </div>
@@ -95,7 +95,7 @@
                         </a>
                         <i class="arrow fas fa-angle-down"></i>
                         <ul class="sub-menu">
-                            <li><a href="{{url('admin/product/add')}}">Thêm mới</a></li>
+                            <li><a href="{{url('admin/product/create')}}">Thêm mới</a></li>
                             <li><a href="{{url('admin/product/list')}}">Danh sách</a></li>
                             <li><a href="{{url('admin/product/cat/list')}}">Danh mục</a></li>
                         </ul>

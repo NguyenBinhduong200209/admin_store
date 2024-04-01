@@ -1,11 +1,14 @@
 <?php
 
-use App\Http\Controllers\CartController;
+
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductsController;
+
+
+
 
 
 
@@ -47,20 +50,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/user/add', [AdminUserController::class, 'add']);
     Route::post('/admin/user/add', [AdminUserController::class, 'store']);
     Route::get('/admin/user/delete/{id}', [AdminUserController::class, 'delete'])->name('delete_user');
-});
-Route::get('/cart', [CartController::class, 'getData']);
-Route::post('/add-cart', [CartController::class, 'addCart']);
-Route::get('/cart-data', [CartController::class, 'getDataFromTable']);
-Route::delete('/cart-data/{id}', [CartController::class, 'deleteCartItem']);
-Route::delete('/delete-cart/{id}', [CartController::class, 'delete']);
-Route::put('/update-cart/{id_product}', [CartController::class, 'update']);
-Route::get('/all-cart/{user_id}', [CartController::class, 'getDataFromTable']);
 
-Route::get('/product', [ProductController::class, 'getData']);
-Route::get('/product/{id}', [ProductController::class, 'show']);
-Route::post('/add-product', [ProductController::class, 'add']);
-Route::delete('/delete-product/{id}', [ProductController::class, 'delete']);
-Route::put('/update-product/{id}', [ProductController::class, 'update']);
+    Route::get('admin/product/list', [ProductsController::class, 'index'])->name('products.index');
+    Route::get('admin/product/create', [ProductsController::class, 'create']);
+    Route::post('admin/product/store', [ProductsController::class, 'store']);
+    Route::get('/admin/product/{id}', [ProductsController::class, 'destroy'])->name('delete_product');
+    Route::get('admin/product/edit/{id}', [ProductsController::class, 'edit'])->name('product.edit');
+    Route::put('admin/product/update/{id}', [ProductsController::class, 'update'])->name('product.update');
+});
+
 
 
 require __DIR__ . '/auth.php';

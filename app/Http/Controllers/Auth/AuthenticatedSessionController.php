@@ -25,10 +25,23 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
+        // Xác thực thông tin đăng nhập
         $request->authenticate();
 
+        // Lấy người dùng đã xác thực
+        $user = $request->user();
+
+        // Tạo token cho người dùng đã xác thực
+        $token = $user->createToken('authToken')->plainTextToken;
+
+        // Gửi token về cho người dùng (sử dụng session flash)
+        $request->session()->put('token', $token);
+
+
+        // Regenerate session để đảm bảo tính bảo mật
         $request->session()->regenerate();
 
+        // Redirect về trang chủ hoặc trang được yêu cầu trước đó
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
